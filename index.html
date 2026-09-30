@@ -81,7 +81,7 @@ button {
 }
 
 /* =========================
-   LEFT EDITOR
+   LEFT
 ========================= */
 
 .editor {
@@ -101,8 +101,6 @@ button {
   gap: 18px;
 }
 
-/* standing */
-
 .standing-section h2,
 .expression-section h2,
 .settings h2,
@@ -111,9 +109,14 @@ button {
   font-size: 16px;
 }
 
+/* =========================
+   STANDING
+========================= */
+
 .standing-preview {
   width: 100%;
   aspect-ratio: 3 / 4;
+
   border: 2px dashed #ccc;
   border-radius: 14px;
 
@@ -139,10 +142,13 @@ button {
   width: 100%;
   margin-top: 10px;
   padding: 10px 12px;
+
   border: none;
   border-radius: 10px;
+
   background: #222;
   color: white;
+
   text-align: center;
 }
 
@@ -154,7 +160,9 @@ input[type="file"] {
   display: none;
 }
 
-/* expressions */
+/* =========================
+   EXPRESSIONS
+========================= */
 
 .expression-section {
   min-width: 0;
@@ -163,7 +171,10 @@ input[type="file"] {
 .expression-grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   max-height: 420px;
   overflow-y: auto;
   padding: 2px;
@@ -172,10 +183,14 @@ input[type="file"] {
 .expression-card {
   position: relative;
   min-width: 0;
+
   border: 2px solid #e3e3e3;
   border-radius: 12px;
+
   padding: 6px;
+
   background: #fafafa;
+
   cursor: pointer;
   transition: 0.15s;
 }
@@ -186,28 +201,35 @@ input[type="file"] {
 
 .expression-card.selected {
   border-color: #222;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.08);
 }
 
 .expression-image {
   width: 100%;
   aspect-ratio: 1 / 1;
+
   border-radius: 8px;
   overflow: hidden;
+
   background: #eee;
 }
 
 .expression-image img {
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
 }
 
 .expression-name {
   margin-top: 5px;
+
   font-size: 12px;
   text-align: center;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -215,6 +237,7 @@ input[type="file"] {
 
 .expression-empty {
   min-height: 180px;
+
   border: 2px dashed #ddd;
   border-radius: 12px;
 
@@ -224,6 +247,7 @@ input[type="file"] {
 
   color: #aaa;
   text-align: center;
+
   padding: 20px;
 }
 
@@ -233,22 +257,31 @@ input[type="file"] {
 
 .settings {
   margin-top: 18px;
+
   background: white;
   border-radius: 18px;
+
   padding: 18px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+
+  box-shadow:
+    0 3px 15px rgba(0,0,0,0.06);
 }
 
 .setting-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 12px;
 }
 
 .setting-item {
   border: 1px solid #e5e5e5;
   border-radius: 12px;
+
   padding: 12px;
+
   background: #fafafa;
 }
 
@@ -256,7 +289,9 @@ input[type="file"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 8px;
+
   font-size: 13px;
   font-weight: 600;
 }
@@ -279,10 +314,14 @@ input[type="range"] {
 select,
 .text-input {
   width: 100%;
+
   border: 1px solid #ddd;
   border-radius: 8px;
+
   background: white;
+
   padding: 8px;
+
   outline: none;
 }
 
@@ -298,9 +337,12 @@ select,
 .small-button {
   border: none;
   border-radius: 8px;
+
   background: #222;
   color: white;
+
   padding: 8px 11px;
+
   white-space: nowrap;
 }
 
@@ -309,26 +351,31 @@ select,
 }
 
 /* =========================
-   SELECTED EXPRESSION EDITOR
+   EXPRESSION EDITOR
 ========================= */
 
 .expression-editor {
   margin-top: 14px;
+
   border: 1px solid #e2e2e2;
   border-radius: 14px;
+
   padding: 14px;
+
   background: #fafafa;
 }
 
 .expression-editor-title {
   font-size: 13px;
   font-weight: 700;
+
   margin-bottom: 10px;
 }
 
 .editor-row {
   display: flex;
   gap: 8px;
+
   margin-bottom: 10px;
 }
 
@@ -339,8 +386,10 @@ select,
 .editor-row button {
   border: none;
   border-radius: 8px;
+
   background: white;
   border: 1px solid #ddd;
+
   padding: 8px 12px;
 }
 
@@ -354,15 +403,21 @@ select,
 
 .crop-controls {
   display: grid;
-  grid-template-columns: repeat(3, 40px);
+
+  grid-template-columns:
+    repeat(3, 40px);
+
   justify-content: center;
+
   gap: 5px;
+
   margin-top: 10px;
 }
 
 .crop-controls button {
   width: 40px;
   height: 36px;
+
   padding: 0;
 }
 
@@ -393,6 +448,7 @@ select,
 .zoom-row {
   display: flex;
   gap: 8px;
+
   margin-top: 10px;
 }
 
@@ -407,8 +463,11 @@ select,
 .preview-box {
   background: white;
   border-radius: 18px;
+
   padding: 18px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+
+  box-shadow:
+    0 3px 15px rgba(0,0,0,0.06);
 
   position: sticky;
   top: 20px;
@@ -418,7 +477,9 @@ select,
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   gap: 10px;
+
   margin-bottom: 12px;
 }
 
@@ -431,41 +492,56 @@ select,
   min-height: 720px;
 
   border-radius: 14px;
+
   border: 1px solid #ddd;
+
   background:
     linear-gradient(45deg, #fafafa 25%, transparent 25%),
     linear-gradient(-45deg, #fafafa 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #fafafa 75%),
     linear-gradient(-45deg, transparent 75%, #fafafa 75%);
+
   background-size: 24px 24px;
-  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+
+  background-position:
+    0 0,
+    0 12px,
+    12px -12px,
+    -12px 0;
 
   display: flex;
   justify-content: center;
   align-items: flex-start;
 
   overflow: auto;
+
   padding: 20px;
 }
 
 #previewCanvas {
   display: block;
+
   max-width: none;
 
   background: white;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+
+  box-shadow:
+    0 4px 18px rgba(0,0,0,0.15);
 }
 
 .save-button {
   width: 100%;
+
   margin-top: 12px;
 
   border: none;
   border-radius: 12px;
+
   padding: 13px;
 
   background: #222;
   color: white;
+
   font-size: 15px;
   font-weight: 700;
 }
@@ -476,10 +552,12 @@ select,
 
 .reset-button {
   width: 100%;
+
   margin-top: 8px;
 
   border: 1px solid #ddd;
   border-radius: 10px;
+
   padding: 10px;
 
   background: white;
@@ -487,10 +565,11 @@ select,
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE / IPAD
 ========================= */
 
 @media (max-width: 1100px) {
+
   .main {
     grid-template-columns: 1fr;
   }
@@ -502,9 +581,11 @@ select,
   .preview-area {
     min-height: 500px;
   }
+
 }
 
 @media (max-width: 700px) {
+
   .app {
     padding: 10px;
   }
@@ -530,7 +611,9 @@ select,
     min-height: 400px;
     padding: 10px;
   }
+
 }
+
 </style>
 </head>
 
@@ -543,13 +626,14 @@ select,
   ========================== -->
 
   <header class="header">
+
     <input
       id="titleInput"
       class="title-input"
       type="text"
       placeholder="이름을 입력하세요"
-      value=""
     >
+
   </header>
 
 
@@ -559,17 +643,22 @@ select,
 
   <main class="main">
 
+
     <!-- =====================
-         LEFT
+         LEFT EDITOR
     ====================== -->
 
     <section class="editor">
+
+
+      <!-- SOURCE -->
 
       <div class="source-box">
 
         <div class="source-top">
 
-          <!-- 기본 스탠딩 -->
+
+          <!-- BASIC STANDING -->
 
           <div class="standing-section">
 
@@ -583,18 +672,21 @@ select,
             </div>
 
             <label class="file-button">
+
               기본 스탠딩 추가
+
               <input
                 id="standingInput"
                 type="file"
                 accept="image/png,image/*"
               >
+
             </label>
 
           </div>
 
 
-          <!-- 표정 -->
+          <!-- EXPRESSIONS -->
 
           <div class="expression-section">
 
@@ -604,19 +696,25 @@ select,
               id="expressionGrid"
               class="expression-grid"
             >
+
               <div class="expression-empty">
                 표정 이미지를 추가해주세요
               </div>
+
             </div>
 
+
             <label class="file-button">
+
               표정 여러 장 추가
+
               <input
                 id="expressionInput"
                 type="file"
                 accept="image/png,image/*"
                 multiple
               >
+
             </label>
 
           </div>
@@ -634,20 +732,27 @@ select,
 
         <h2>표정 설정</h2>
 
+
         <div class="setting-grid">
 
-          <!-- 표정 크기 -->
+
+          <!-- SIZE -->
 
           <div class="setting-item">
 
             <div class="setting-label">
-              <span>표정 크기</span>
+
+              <span>
+                표정 크기
+              </span>
+
               <span
                 id="expressionSizeValue"
                 class="setting-value"
               >
                 280px
               </span>
+
             </div>
 
             <div class="range-row">
@@ -666,52 +771,101 @@ select,
           </div>
 
 
-          <!-- 열 -->
+          <!-- COLUMN -->
 
           <div class="setting-item">
 
             <div class="setting-label">
-              <span>한 줄에 표시할 표정</span>
+
+              <span>
+                한 줄에 표시할 표정
+              </span>
+
               <span
                 id="columnValue"
                 class="setting-value"
               >
                 3개
               </span>
+
             </div>
 
             <select id="columnCount">
-              <option value="1">1개</option>
-              <option value="2">2개</option>
-              <option value="3" selected>3개</option>
-              <option value="4">4개</option>
-              <option value="5">5개</option>
-              <option value="6">6개</option>
-              <option value="7">7개</option>
-              <option value="8">8개</option>
+
+              <option value="1">
+                1개
+              </option>
+
+              <option value="2">
+                2개
+              </option>
+
+              <option
+                value="3"
+                selected
+              >
+                3개
+              </option>
+
+              <option value="4">
+                4개
+              </option>
+
+              <option value="5">
+                5개
+              </option>
+
+              <option value="6">
+                6개
+              </option>
+
+              <option value="7">
+                7개
+              </option>
+
+              <option value="8">
+                8개
+              </option>
+
             </select>
 
           </div>
 
 
-          <!-- 비율 -->
+          <!-- RATIO -->
 
           <div class="setting-item">
 
             <div class="setting-label">
-              <span>표정 비율</span>
+
+              <span>
+                표정 비율
+              </span>
+
             </div>
 
             <div class="ratio-row">
 
               <select id="ratioSelect">
 
-                <option value="1">1 : 1</option>
-                <option value="1.333333">4 : 3</option>
-                <option value="0.75">3 : 4</option>
-                <option value="1.777777">16 : 9</option>
+                <option value="1">
+                  1 : 1
+                </option>
+
+                <option value="1.333333">
+                  4 : 3
+                </option>
+
+                <option value="0.75">
+                  3 : 4
+                </option>
+
+                <option value="1.777777">
+                  16 : 9
+                </option>
 
               </select>
+
 
               <button
                 id="applyRatioAll"
@@ -725,12 +879,16 @@ select,
           </div>
 
 
-          <!-- 선택 표정 -->
+          <!-- SELECTED NAME -->
 
           <div class="setting-item">
 
             <div class="setting-label">
-              <span>선택된 표정</span>
+
+              <span>
+                선택된 표정
+              </span>
+
             </div>
 
             <input
@@ -746,7 +904,9 @@ select,
         </div>
 
 
-        <!-- 선택된 표정 편집 -->
+        <!-- =====================
+             EXPRESSION EDITOR
+        ====================== -->
 
         <div
           id="expressionEditor"
@@ -757,6 +917,7 @@ select,
           <div class="expression-editor-title">
             선택한 표정 편집
           </div>
+
 
           <div class="editor-row">
 
@@ -793,6 +954,7 @@ select,
           <div class="expression-editor-title">
             크롭 위치
           </div>
+
 
           <div class="crop-controls">
 
@@ -865,22 +1027,29 @@ select,
 
       <div class="preview-title-row">
 
-        <h2>완성본 미리보기</h2>
+        <h2>
+          완성본 미리보기
+        </h2>
 
       </div>
+
 
       <div class="preview-area">
 
-        <canvas id="previewCanvas"></canvas>
+        <canvas
+          id="previewCanvas"
+        ></canvas>
 
       </div>
+
 
       <button
         id="savePng"
         class="save-button"
       >
-        PNG로 저장
+        PNG 저장
       </button>
+
 
       <button
         id="resetAll"
@@ -934,31 +1103,49 @@ const expressionSize =
   document.getElementById("expressionSize");
 
 const expressionSizeValue =
-  document.getElementById("expressionSizeValue");
+  document.getElementById(
+    "expressionSizeValue"
+  );
 
 const columnCount =
-  document.getElementById("columnCount");
+  document.getElementById(
+    "columnCount"
+  );
 
 const columnValue =
-  document.getElementById("columnValue");
+  document.getElementById(
+    "columnValue"
+  );
 
 const ratioSelect =
-  document.getElementById("ratioSelect");
+  document.getElementById(
+    "ratioSelect"
+  );
 
 const applyRatioAll =
-  document.getElementById("applyRatioAll");
+  document.getElementById(
+    "applyRatioAll"
+  );
 
 const selectedName =
-  document.getElementById("selectedName");
+  document.getElementById(
+    "selectedName"
+  );
 
 const expressionEditor =
-  document.getElementById("expressionEditor");
+  document.getElementById(
+    "expressionEditor"
+  );
 
 const expressionNameInput =
-  document.getElementById("expressionNameInput");
+  document.getElementById(
+    "expressionNameInput"
+  );
 
 const previewCanvas =
-  document.getElementById("previewCanvas");
+  document.getElementById(
+    "previewCanvas"
+  );
 
 const ctx =
   previewCanvas.getContext("2d");
@@ -970,101 +1157,143 @@ const ctx =
 
 function loadImage(src) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise(
+    (resolve, reject) => {
 
-    const img = new Image();
+      const img =
+        new Image();
 
-    img.onload = () => resolve(img);
+      img.onload =
+        () => resolve(img);
 
-    img.onerror = reject;
+      img.onerror =
+        reject;
 
-    img.src = src;
+      img.src = src;
 
-  });
+    }
+  );
 
 }
 
 
 /* =========================================================
-   STANDING IMAGE
+   BASIC STANDING
 ========================================================= */
 
-standingInput.addEventListener("change", async (event) => {
+standingInput.addEventListener(
+  "change",
+  async (event) => {
 
-  const file = event.target.files[0];
+    const file =
+      event.target.files[0];
 
-  if (!file) return;
+    if (!file) return;
 
-  const src = URL.createObjectURL(file);
 
-  standingImage = await loadImage(src);
+    const src =
+      URL.createObjectURL(file);
 
-  standingPreview.innerHTML = "";
 
-  const img = document.createElement("img");
+    standingImage =
+      await loadImage(src);
 
-  img.src = src;
 
-  standingPreview.appendChild(img);
+    standingPreview.innerHTML =
+      "";
 
-  renderCanvas();
 
-});
+    const img =
+      document.createElement("img");
+
+    img.src =
+      src;
+
+
+    standingPreview.appendChild(img);
+
+
+    renderCanvas();
+
+  }
+);
 
 
 /* =========================================================
-   EXPRESSION UPLOAD
+   EXPRESSIONS
 ========================================================= */
 
-expressionInput.addEventListener("change", async (event) => {
+expressionInput.addEventListener(
+  "change",
+  async (event) => {
 
-  const files = [...event.target.files];
+    const files =
+      [...event.target.files];
 
-  for (const file of files) {
 
-    const src = URL.createObjectURL(file);
+    for (const file of files) {
 
-    const img = await loadImage(src);
+      const src =
+        URL.createObjectURL(file);
 
-    expressionData.push({
 
-      id: nextId++,
+      const img =
+        await loadImage(src);
 
-      src,
 
-      image: img,
+      expressionData.push({
 
-      name: file.name.replace(/\.[^/.]+$/, ""),
+        id: nextId++,
 
-      x: 0,
+        src,
 
-      y: 0,
+        image: img,
 
-      zoom: 1,
+        name:
+          file.name.replace(
+            /\.[^/.]+$/,
+            ""
+          ),
 
-      ratio: Number(ratioSelect.value)
+        x: 0,
 
-    });
+        y: 0,
+
+        zoom: 1,
+
+        ratio:
+          Number(
+            ratioSelect.value
+          )
+
+      });
+
+    }
+
+
+    if (
+      selectedExpressionId === null &&
+      expressionData.length > 0
+    ) {
+
+      selectedExpressionId =
+        expressionData[0].id;
+
+    }
+
+
+    renderExpressionGrid();
+
+    updateEditor();
+
+    renderCanvas();
+
+
+    expressionInput.value =
+      "";
 
   }
-
-  if (
-    selectedExpressionId === null &&
-    expressionData.length > 0
-  ) {
-    selectedExpressionId =
-      expressionData[0].id;
-  }
-
-  renderExpressionGrid();
-
-  updateEditor();
-
-  renderCanvas();
-
-  expressionInput.value = "";
-
-});
+);
 
 
 /* =========================================================
@@ -1073,9 +1302,13 @@ expressionInput.addEventListener("change", async (event) => {
 
 function renderExpressionGrid() {
 
-  expressionGrid.innerHTML = "";
+  expressionGrid.innerHTML =
+    "";
 
-  if (expressionData.length === 0) {
+
+  if (
+    expressionData.length === 0
+  ) {
 
     const empty =
       document.createElement("div");
@@ -1086,7 +1319,9 @@ function renderExpressionGrid() {
     empty.textContent =
       "표정 이미지를 추가해주세요";
 
-    expressionGrid.appendChild(empty);
+    expressionGrid.appendChild(
+      empty
+    );
 
     return;
 
@@ -1094,74 +1329,99 @@ function renderExpressionGrid() {
 
 
   const columns =
-    Number(columnCount.value);
+    Number(
+      columnCount.value
+    );
+
 
   expressionGrid.style.gridTemplateColumns =
     `repeat(${columns}, minmax(0, 1fr))`;
 
 
-  expressionData.forEach((item) => {
+  expressionData.forEach(
+    (item) => {
 
-    const card =
-      document.createElement("div");
+      const card =
+        document.createElement("div");
 
-    card.className =
-      "expression-card";
 
-    if (
-      item.id === selectedExpressionId
-    ) {
-      card.classList.add("selected");
+      card.className =
+        "expression-card";
+
+
+      if (
+        item.id ===
+        selectedExpressionId
+      ) {
+
+        card.classList.add(
+          "selected"
+        );
+
+      }
+
+
+      const imageBox =
+        document.createElement("div");
+
+      imageBox.className =
+        "expression-image";
+
+
+      const img =
+        document.createElement("img");
+
+      img.src =
+        item.src;
+
+
+      img.style.objectFit =
+        "cover";
+
+
+      imageBox.appendChild(img);
+
+
+      const name =
+        document.createElement("div");
+
+      name.className =
+        "expression-name";
+
+      name.textContent =
+        item.name;
+
+
+      card.appendChild(
+        imageBox
+      );
+
+      card.appendChild(
+        name
+      );
+
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          selectedExpressionId =
+            item.id;
+
+          renderExpressionGrid();
+
+          updateEditor();
+
+        }
+      );
+
+
+      expressionGrid.appendChild(
+        card
+      );
+
     }
-
-
-    const imageBox =
-      document.createElement("div");
-
-    imageBox.className =
-      "expression-image";
-
-
-    const img =
-      document.createElement("img");
-
-    img.src = item.src;
-
-    img.style.objectFit = "cover";
-
-    imageBox.appendChild(img);
-
-
-    const name =
-      document.createElement("div");
-
-    name.className =
-      "expression-name";
-
-    name.textContent =
-      item.name;
-
-
-    card.appendChild(imageBox);
-
-    card.appendChild(name);
-
-
-    card.addEventListener("click", () => {
-
-      selectedExpressionId =
-        item.id;
-
-      renderExpressionGrid();
-
-      updateEditor();
-
-    });
-
-
-    expressionGrid.appendChild(card);
-
-  });
+  );
 
 }
 
@@ -1174,7 +1434,8 @@ function getSelectedExpression() {
 
   return expressionData.find(
     item =>
-      item.id === selectedExpressionId
+      item.id ===
+      selectedExpressionId
   );
 
 }
@@ -1191,7 +1452,8 @@ function updateEditor() {
     expressionEditor.style.display =
       "none";
 
-    selectedName.value = "";
+    selectedName.value =
+      "";
 
     return;
 
@@ -1201,8 +1463,10 @@ function updateEditor() {
   expressionEditor.style.display =
     "block";
 
+
   selectedName.value =
     item.name;
+
 
   expressionNameInput.value =
     item.name;
@@ -1211,7 +1475,7 @@ function updateEditor() {
 
 
 /* =========================================================
-   EXPRESSION NAME
+   NAME
 ========================================================= */
 
 expressionNameInput.addEventListener(
@@ -1223,11 +1487,14 @@ expressionNameInput.addEventListener(
 
     if (!item) return;
 
+
     item.name =
       expressionNameInput.value;
 
+
     selectedName.value =
       item.name;
+
 
     renderExpressionGrid();
 
@@ -1238,66 +1505,85 @@ expressionNameInput.addEventListener(
 
 
 /* =========================================================
-   MOVE
+   MOVE LEFT
 ========================================================= */
 
 document
   .getElementById("moveLeft")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const index =
-      expressionData.findIndex(
-        item =>
-          item.id === selectedExpressionId
-      );
+      const index =
+        expressionData.findIndex(
+          item =>
+            item.id ===
+            selectedExpressionId
+        );
 
-    if (index <= 0) return;
 
-    [
-      expressionData[index - 1],
-      expressionData[index]
-    ] = [
-      expressionData[index],
-      expressionData[index - 1]
-    ];
+      if (index <= 0) return;
 
-    renderExpressionGrid();
 
-    renderCanvas();
+      [
+        expressionData[index - 1],
+        expressionData[index]
+      ] = [
+        expressionData[index],
+        expressionData[index - 1]
+      ];
 
-  });
 
+      renderExpressionGrid();
+
+      renderCanvas();
+
+    }
+  );
+
+
+/* =========================================================
+   MOVE RIGHT
+========================================================= */
 
 document
   .getElementById("moveRight")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const index =
-      expressionData.findIndex(
-        item =>
-          item.id === selectedExpressionId
-      );
+      const index =
+        expressionData.findIndex(
+          item =>
+            item.id ===
+            selectedExpressionId
+        );
 
-    if (
-      index < 0 ||
-      index >= expressionData.length - 1
-    ) {
-      return;
+
+      if (
+        index < 0 ||
+        index >=
+          expressionData.length - 1
+      ) {
+        return;
+      }
+
+
+      [
+        expressionData[index],
+        expressionData[index + 1]
+      ] = [
+        expressionData[index + 1],
+        expressionData[index]
+      ];
+
+
+      renderExpressionGrid();
+
+      renderCanvas();
+
     }
-
-    [
-      expressionData[index],
-      expressionData[index + 1]
-    ] = [
-      expressionData[index + 1],
-      expressionData[index]
-    ];
-
-    renderExpressionGrid();
-
-    renderCanvas();
-
-  });
+  );
 
 
 /* =========================================================
@@ -1305,70 +1591,111 @@ document
 ========================================================= */
 
 document
-  .getElementById("deleteExpression")
-  .addEventListener("click", () => {
+  .getElementById(
+    "deleteExpression"
+  )
+  .addEventListener(
+    "click",
+    () => {
 
-    if (selectedExpressionId === null)
-      return;
-
-    const index =
-      expressionData.findIndex(
-        item =>
-          item.id === selectedExpressionId
-      );
-
-    if (index < 0) return;
-
-    expressionData.splice(index, 1);
+      if (
+        selectedExpressionId === null
+      ) {
+        return;
+      }
 
 
-    if (expressionData.length === 0) {
-
-      selectedExpressionId = null;
-
-    } else {
-
-      const newIndex =
-        Math.min(
-          index,
-          expressionData.length - 1
+      const index =
+        expressionData.findIndex(
+          item =>
+            item.id ===
+            selectedExpressionId
         );
 
-      selectedExpressionId =
-        expressionData[newIndex].id;
+
+      if (index < 0) return;
+
+
+      expressionData.splice(
+        index,
+        1
+      );
+
+
+      if (
+        expressionData.length === 0
+      ) {
+
+        selectedExpressionId =
+          null;
+
+      } else {
+
+        const newIndex =
+          Math.min(
+            index,
+            expressionData.length - 1
+          );
+
+
+        selectedExpressionId =
+          expressionData[
+            newIndex
+          ].id;
+
+      }
+
+
+      renderExpressionGrid();
+
+      updateEditor();
+
+      renderCanvas();
 
     }
-
-
-    renderExpressionGrid();
-
-    updateEditor();
-
-    renderCanvas();
-
-  });
+  );
 
 
 /* =========================================================
    CROP
 ========================================================= */
 
-function changeCrop(dx, dy) {
+function changeCrop(
+  dx,
+  dy
+) {
 
   const item =
     getSelectedExpression();
 
+
   if (!item) return;
+
 
   item.x += dx;
 
   item.y += dy;
 
+
   item.x =
-    Math.max(-100, Math.min(100, item.x));
+    Math.max(
+      -100,
+      Math.min(
+        100,
+        item.x
+      )
+    );
+
 
   item.y =
-    Math.max(-100, Math.min(100, item.y));
+    Math.max(
+      -100,
+      Math.min(
+        100,
+        item.y
+      )
+    );
+
 
   renderCanvas();
 
@@ -1379,7 +1706,11 @@ document
   .getElementById("cropUp")
   .addEventListener(
     "click",
-    () => changeCrop(0, -5)
+    () =>
+      changeCrop(
+        0,
+        -5
+      )
   );
 
 
@@ -1387,7 +1718,11 @@ document
   .getElementById("cropDown")
   .addEventListener(
     "click",
-    () => changeCrop(0, 5)
+    () =>
+      changeCrop(
+        0,
+        5
+      )
   );
 
 
@@ -1395,7 +1730,11 @@ document
   .getElementById("cropLeft")
   .addEventListener(
     "click",
-    () => changeCrop(-5, 0)
+    () =>
+      changeCrop(
+        -5,
+        0
+      )
   );
 
 
@@ -1403,26 +1742,36 @@ document
   .getElementById("cropRight")
   .addEventListener(
     "click",
-    () => changeCrop(5, 0)
+    () =>
+      changeCrop(
+        5,
+        0
+      )
   );
 
 
 document
   .getElementById("cropCenter")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const item =
-      getSelectedExpression();
+      const item =
+        getSelectedExpression();
 
-    if (!item) return;
 
-    item.x = 0;
+      if (!item) return;
 
-    item.y = 0;
 
-    renderCanvas();
+      item.x = 0;
 
-  });
+      item.y = 0;
+
+
+      renderCanvas();
+
+    }
+  );
 
 
 /* =========================================================
@@ -1431,40 +1780,62 @@ document
 
 document
   .getElementById("zoomIn")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const item =
-      getSelectedExpression();
+      const item =
+        getSelectedExpression();
 
-    if (!item) return;
 
-    item.zoom += 0.1;
+      if (!item) return;
 
-    item.zoom =
-      Math.min(3, item.zoom);
 
-    renderCanvas();
+      item.zoom +=
+        0.1;
 
-  });
+
+      item.zoom =
+        Math.min(
+          3,
+          item.zoom
+        );
+
+
+      renderCanvas();
+
+    }
+  );
 
 
 document
   .getElementById("zoomOut")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const item =
-      getSelectedExpression();
+      const item =
+        getSelectedExpression();
 
-    if (!item) return;
 
-    item.zoom -= 0.1;
+      if (!item) return;
 
-    item.zoom =
-      Math.max(0.5, item.zoom);
 
-    renderCanvas();
+      item.zoom -=
+        0.1;
 
-  });
+
+      item.zoom =
+        Math.max(
+          0.5,
+          item.zoom
+        );
+
+
+      renderCanvas();
+
+    }
+  );
 
 
 /* =========================================================
@@ -1472,27 +1843,40 @@ document
 ========================================================= */
 
 document
-  .getElementById("applyCropAll")
-  .addEventListener("click", () => {
+  .getElementById(
+    "applyCropAll"
+  )
+  .addEventListener(
+    "click",
+    () => {
 
-    const selected =
-      getSelectedExpression();
+      const selected =
+        getSelectedExpression();
 
-    if (!selected) return;
 
-    expressionData.forEach(item => {
+      if (!selected) return;
 
-      item.x = selected.x;
 
-      item.y = selected.y;
+      expressionData.forEach(
+        item => {
 
-      item.zoom = selected.zoom;
+          item.x =
+            selected.x;
 
-    });
+          item.y =
+            selected.y;
 
-    renderCanvas();
+          item.zoom =
+            selected.zoom;
 
-  });
+        }
+      );
+
+
+      renderCanvas();
+
+    }
+  );
 
 
 /* =========================================================
@@ -1504,13 +1888,20 @@ applyRatioAll.addEventListener(
   () => {
 
     const ratio =
-      Number(ratioSelect.value);
+      Number(
+        ratioSelect.value
+      );
 
-    expressionData.forEach(item => {
 
-      item.ratio = ratio;
+    expressionData.forEach(
+      item => {
 
-    });
+        item.ratio =
+          ratio;
+
+      }
+    );
+
 
     renderCanvas();
 
@@ -1529,6 +1920,7 @@ expressionSize.addEventListener(
     expressionSizeValue.textContent =
       `${expressionSize.value}px`;
 
+
     renderCanvas();
 
   }
@@ -1545,6 +1937,7 @@ columnCount.addEventListener(
 
     columnValue.textContent =
       `${columnCount.value}개`;
+
 
     renderExpressionGrid();
 
@@ -1570,27 +1963,35 @@ function drawCroppedImage(
   const img =
     item.image;
 
+
   if (!img) return;
 
 
   const targetRatio =
     width / height;
 
+
   const imageRatio =
-    img.width / img.height;
+    img.width /
+    img.height;
 
 
   let sourceWidth;
+
   let sourceHeight;
 
 
-  if (imageRatio > targetRatio) {
+  if (
+    imageRatio >
+    targetRatio
+  ) {
 
     sourceHeight =
       img.height;
 
     sourceWidth =
-      img.height * targetRatio;
+      img.height *
+      targetRatio;
 
   } else {
 
@@ -1598,55 +1999,70 @@ function drawCroppedImage(
       img.width;
 
     sourceHeight =
-      img.width / targetRatio;
+      img.width /
+      targetRatio;
 
   }
 
 
-  /*
-    확대
+  sourceWidth /=
+    item.zoom;
 
-    zoom 1 = 기본 크기
-    zoom 2 = 두 배 확대
-  */
-
-  sourceWidth /= item.zoom;
-
-  sourceHeight /= item.zoom;
+  sourceHeight /=
+    item.zoom;
 
 
   const maxX =
-    img.width - sourceWidth;
+    img.width -
+    sourceWidth;
+
 
   const maxY =
-    img.height - sourceHeight;
+    img.height -
+    sourceHeight;
 
-
-  /*
-    x/y는 -100 ~ 100
-
-    0 = 중앙
-  */
 
   let sx =
-    (maxX / 2) +
-    (maxX / 2) * (item.x / 100);
+    (
+      maxX / 2
+    ) +
+    (
+      maxX / 2
+    ) *
+    (
+      item.x / 100
+    );
+
 
   let sy =
-    (maxY / 2) +
-    (maxY / 2) * (item.y / 100);
+    (
+      maxY / 2
+    ) +
+    (
+      maxY / 2
+    ) *
+    (
+      item.y / 100
+    );
 
 
   sx =
     Math.max(
       0,
-      Math.min(maxX, sx)
+      Math.min(
+        maxX,
+        sx
+      )
     );
+
 
   sy =
     Math.max(
       0,
-      Math.min(maxY, sy)
+      Math.min(
+        maxY,
+        sy
+      )
     );
 
 
@@ -1666,51 +2082,53 @@ function drawCroppedImage(
 
 
 /* =========================================================
-   CANVAS RENDER
+   CANVAS
 ========================================================= */
 
-async function renderCanvas() {
+function renderCanvas() {
 
   const expressionWidth =
-    Number(expressionSize.value);
+    Number(
+      expressionSize.value
+    );
+
 
   const columns =
-    Number(columnCount.value);
+    Number(
+      columnCount.value
+    );
+
 
   const expressionGap =
     25;
 
+
   const mainGap =
     60;
+
 
   const padding =
     60;
 
+
   const standingWidth =
     700;
+
 
   const standingHeight =
     900;
 
 
-  /*
-    전체 표정 영역 크기
-  */
-
   const expressionAreaWidth =
-    expressionWidth * columns +
-    expressionGap * (columns - 1);
+    expressionWidth *
+      columns +
+    expressionGap *
+      (columns - 1);
 
-
-  /*
-    선택된 표정 비율
-
-    전체 적용을 눌렀다면 모두 같은 비율.
-    기본값은 1:1.
-  */
 
   const firstExpression =
     expressionData[0];
+
 
   const expressionRatio =
     firstExpression
@@ -1736,15 +2154,20 @@ async function renderCanvas() {
   const nameHeight =
     55;
 
+
   const rowHeight =
     expressionHeight +
     nameHeight;
 
 
   const expressionAreaHeight =
-    rows * rowHeight +
-    Math.max(0, rows - 1) *
-    expressionGap;
+    rows *
+      rowHeight +
+    Math.max(
+      0,
+      rows - 1
+    ) *
+      expressionGap;
 
 
   const canvasWidth =
@@ -1763,16 +2186,22 @@ async function renderCanvas() {
 
 
   previewCanvas.width =
-    Math.round(canvasWidth);
+    Math.round(
+      canvasWidth
+    );
+
 
   previewCanvas.height =
-    Math.round(canvasHeight);
+    Math.round(
+      canvasHeight
+    );
 
 
-  /* 흰색 배경 */
+  /* 배경 */
 
   ctx.fillStyle =
     "#ffffff";
+
 
   ctx.fillRect(
     0,
@@ -1783,7 +2212,7 @@ async function renderCanvas() {
 
 
   /* =========================
-     제목
+     TITLE
   ========================= */
 
   const title =
@@ -1795,14 +2224,18 @@ async function renderCanvas() {
     ctx.fillStyle =
       "#222";
 
+
     ctx.font =
       "bold 42px Arial, sans-serif";
+
 
     ctx.textAlign =
       "left";
 
+
     ctx.textBaseline =
       "top";
+
 
     ctx.fillText(
       title,
@@ -1814,11 +2247,12 @@ async function renderCanvas() {
 
 
   /* =========================
-     기본 스탠딩
+     STANDING
   ========================= */
 
   const standingX =
     padding;
+
 
   const standingY =
     padding +
@@ -1840,18 +2274,24 @@ async function renderCanvas() {
       standingImage.width /
       standingImage.height;
 
+
     let drawWidth =
       standingWidth;
+
 
     let drawHeight =
       standingWidth /
       imageRatio;
 
 
-    if (drawHeight > standingHeight) {
+    if (
+      drawHeight >
+      standingHeight
+    ) {
 
       drawHeight =
         standingHeight;
+
 
       drawWidth =
         standingHeight *
@@ -1862,11 +2302,18 @@ async function renderCanvas() {
 
     const drawX =
       standingX +
-      (standingWidth - drawWidth) / 2;
+      (
+        standingWidth -
+        drawWidth
+      ) / 2;
+
 
     const drawY =
       standingY +
-      (standingHeight - drawHeight) / 2;
+      (
+        standingHeight -
+        drawHeight
+      ) / 2;
 
 
     ctx.drawImage(
@@ -1882,8 +2329,10 @@ async function renderCanvas() {
     ctx.strokeStyle =
       "#ccc";
 
+
     ctx.lineWidth =
       2;
+
 
     ctx.strokeRect(
       standingX,
@@ -1892,17 +2341,22 @@ async function renderCanvas() {
       standingHeight
     );
 
+
     ctx.fillStyle =
       "#aaa";
+
 
     ctx.font =
       "28px Arial, sans-serif";
 
+
     ctx.textAlign =
       "center";
 
+
     ctx.textBaseline =
       "middle";
+
 
     ctx.fillText(
       "기본 스탠딩",
@@ -1916,7 +2370,7 @@ async function renderCanvas() {
 
 
   /* =========================
-     표정
+     EXPRESSIONS
   ========================= */
 
   const expressionStartX =
@@ -1933,10 +2387,15 @@ async function renderCanvas() {
     (item, index) => {
 
       const column =
-        index % columns;
+        index %
+        columns;
+
 
       const row =
-        Math.floor(index / columns);
+        Math.floor(
+          index /
+          columns
+        );
 
 
       const x =
@@ -1957,9 +2416,7 @@ async function renderCanvas() {
         );
 
 
-      /*
-        이미지 영역
-      */
+      /* 이미지 */
 
       drawCroppedImage(
         ctx,
@@ -1971,18 +2428,19 @@ async function renderCanvas() {
       );
 
 
-      /*
-        이름
-      */
+      /* 이름 */
 
       ctx.fillStyle =
         "#222";
 
+
       ctx.font =
         "22px Arial, sans-serif";
 
+
       ctx.textAlign =
         "center";
+
 
       ctx.textBaseline =
         "middle";
@@ -2004,7 +2462,7 @@ async function renderCanvas() {
 
 
 /* =========================================================
-   TITLE
+   TITLE UPDATE
 ========================================================= */
 
 titleInput.addEventListener(
@@ -2015,36 +2473,140 @@ titleInput.addEventListener(
 
 /* =========================================================
    SAVE PNG
+   iPad / Safari 대응
 ========================================================= */
 
 document
   .getElementById("savePng")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const title =
-      titleInput.value.trim();
-
-
-    const filename =
-      title
-        ? `${title}.png`
-        : "trpg-standing.png";
+      const title =
+        titleInput.value.trim();
 
 
-    const link =
-      document.createElement("a");
+      const filename =
+        title
+          ? `${title}.png`
+          : "trpg-standing.png";
 
-    link.download =
-      filename;
 
-    link.href =
-      previewCanvas.toDataURL(
+      previewCanvas.toBlob(
+        async (blob) => {
+
+          if (!blob) {
+
+            alert(
+              "PNG를 만드는 데 실패했어."
+            );
+
+            return;
+
+          }
+
+
+          const file =
+            new File(
+              [blob],
+              filename,
+              {
+                type:
+                  "image/png"
+              }
+            );
+
+
+          /*
+            iPad / iPhone에서
+            공유 메뉴를 사용할 수 있는 경우
+          */
+
+          if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+              files: [file]
+            })
+          ) {
+
+            try {
+
+              await navigator.share({
+                files: [file],
+                title: filename
+              });
+
+
+              return;
+
+            } catch (error) {
+
+              /*
+                사용자가 공유창을
+                그냥 닫은 경우
+              */
+
+              if (
+                error.name ===
+                "AbortError"
+              ) {
+
+                return;
+
+              }
+
+            }
+
+          }
+
+
+          /*
+            공유 기능을 사용할 수 없는
+            브라우저용 fallback
+          */
+
+          const url =
+            URL.createObjectURL(
+              blob
+            );
+
+
+          const newWindow =
+            window.open(
+              url,
+              "_blank"
+            );
+
+
+          if (!newWindow) {
+
+            alert(
+              "팝업이 차단됐어. Safari에서 다시 눌러줘."
+            );
+
+            return;
+
+          }
+
+
+          setTimeout(
+            () => {
+
+              URL.revokeObjectURL(
+                url
+              );
+
+            },
+            60000
+          );
+
+        },
         "image/png"
       );
 
-    link.click();
-
-  });
+    }
+  );
 
 
 /* =========================================================
@@ -2053,49 +2615,71 @@ document
 
 document
   .getElementById("resetAll")
-  .addEventListener("click", () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    const ok =
-      confirm(
-        "현재 작업을 전부 초기화할까요?"
-      );
-
-    if (!ok) return;
-
-
-    standingImage = null;
-
-    expressionData = [];
-
-    selectedExpressionId = null;
-
-    nextId = 1;
+      const ok =
+        confirm(
+          "현재 작업을 전부 초기화할까요?"
+        );
 
 
-    standingPreview.innerHTML =
-      "기본 스탠딩을 추가해주세요";
+      if (!ok) return;
 
 
-    titleInput.value = "";
-
-    expressionSize.value = 280;
-
-    expressionSizeValue.textContent =
-      "280px";
-
-    columnCount.value = 3;
-
-    columnValue.textContent =
-      "3개";
+      standingImage =
+        null;
 
 
-    renderExpressionGrid();
+      expressionData =
+        [];
 
-    updateEditor();
 
-    renderCanvas();
+      selectedExpressionId =
+        null;
 
-  });
+
+      nextId =
+        1;
+
+
+      standingPreview.innerHTML =
+        "기본 스탠딩을 추가해주세요";
+
+
+      titleInput.value =
+        "";
+
+
+      expressionSize.value =
+        280;
+
+
+      expressionSizeValue.textContent =
+        "280px";
+
+
+      columnCount.value =
+        3;
+
+
+      columnValue.textContent =
+        "3개";
+
+
+      ratioSelect.value =
+        1;
+
+
+      renderExpressionGrid();
+
+      updateEditor();
+
+      renderCanvas();
+
+    }
+  );
 
 
 /* =========================================================

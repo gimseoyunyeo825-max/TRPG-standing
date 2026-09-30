@@ -421,12 +421,18 @@ select,
   padding: 0;
 }
 
-.crop-center {
+.crop-up {
   grid-column: 2;
+  grid-row: 1;
 }
 
 .crop-left {
   grid-column: 1;
+  grid-row: 2;
+}
+
+.crop-center {
+  grid-column: 2;
   grid-row: 2;
 }
 
@@ -438,11 +444,6 @@ select,
 .crop-down {
   grid-column: 2;
   grid-row: 3;
-}
-
-.crop-up {
-  grid-column: 2;
-  grid-row: 1;
 }
 
 .zoom-row {
@@ -565,6 +566,149 @@ select,
 }
 
 /* =========================
+   PNG MODAL
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0,0,0,0.72);
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  width: min(1100px, 100%);
+  max-height: 95vh;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.modal-close {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #eee;
+
+  font-size: 20px;
+}
+
+.modal-hint {
+  margin-bottom: 12px;
+
+  padding: 10px 12px;
+
+  border-radius: 10px;
+
+  background: #f5f5f5;
+
+  color: #666;
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+.modal-image-area {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  background: #eee;
+
+  border-radius: 12px;
+
+  padding: 12px;
+}
+
+#savedImage {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+
+  user-select: auto;
+  -webkit-user-select: auto;
+
+  -webkit-touch-callout: default;
+}
+
+.modal-bottom {
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+.modal-bottom button {
+  flex: 1;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 11px;
+}
+
+.modal-share {
+  background: #222;
+  color: white;
+}
+
+.modal-close-bottom {
+  background: #eee;
+  color: #333;
+}
+
+/* =========================
    MOBILE / IPAD
 ========================= */
 
@@ -612,8 +756,16 @@ select,
     padding: 10px;
   }
 
-}
+  .modal {
+    padding: 8px;
+  }
 
+  .modal-content {
+    max-height: 98vh;
+    border-radius: 14px;
+  }
+
+}
 </style>
 </head>
 
@@ -621,9 +773,7 @@ select,
 
 <div class="app">
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- HEADER -->
 
   <header class="header">
 
@@ -637,28 +787,19 @@ select,
   </header>
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
+  <!-- MAIN -->
 
   <main class="main">
 
-
-    <!-- =====================
-         LEFT EDITOR
-    ====================== -->
+    <!-- LEFT -->
 
     <section class="editor">
-
-
-      <!-- SOURCE -->
 
       <div class="source-box">
 
         <div class="source-top">
 
-
-          <!-- BASIC STANDING -->
+          <!-- STANDING -->
 
           <div class="standing-section">
 
@@ -703,7 +844,6 @@ select,
 
             </div>
 
-
             <label class="file-button">
 
               표정 여러 장 추가
@@ -724,17 +864,13 @@ select,
       </div>
 
 
-      <!-- =====================
-           SETTINGS
-      ====================== -->
+      <!-- SETTINGS -->
 
       <section class="settings">
 
         <h2>표정 설정</h2>
 
-
         <div class="setting-grid">
-
 
           <!-- SIZE -->
 
@@ -742,9 +878,7 @@ select,
 
             <div class="setting-label">
 
-              <span>
-                표정 크기
-              </span>
+              <span>표정 크기</span>
 
               <span
                 id="expressionSizeValue"
@@ -771,7 +905,7 @@ select,
           </div>
 
 
-          <!-- COLUMN -->
+          <!-- COLUMNS -->
 
           <div class="setting-item">
 
@@ -792,40 +926,14 @@ select,
 
             <select id="columnCount">
 
-              <option value="1">
-                1개
-              </option>
-
-              <option value="2">
-                2개
-              </option>
-
-              <option
-                value="3"
-                selected
-              >
-                3개
-              </option>
-
-              <option value="4">
-                4개
-              </option>
-
-              <option value="5">
-                5개
-              </option>
-
-              <option value="6">
-                6개
-              </option>
-
-              <option value="7">
-                7개
-              </option>
-
-              <option value="8">
-                8개
-              </option>
+              <option value="1">1개</option>
+              <option value="2">2개</option>
+              <option value="3" selected>3개</option>
+              <option value="4">4개</option>
+              <option value="5">5개</option>
+              <option value="6">6개</option>
+              <option value="7">7개</option>
+              <option value="8">8개</option>
 
             </select>
 
@@ -838,9 +946,7 @@ select,
 
             <div class="setting-label">
 
-              <span>
-                표정 비율
-              </span>
+              <span>표정 비율</span>
 
             </div>
 
@@ -866,7 +972,6 @@ select,
 
               </select>
 
-
               <button
                 id="applyRatioAll"
                 class="small-button"
@@ -885,9 +990,7 @@ select,
 
             <div class="setting-label">
 
-              <span>
-                선택된 표정
-              </span>
+              <span>선택된 표정</span>
 
             </div>
 
@@ -904,9 +1007,7 @@ select,
         </div>
 
 
-        <!-- =====================
-             EXPRESSION EDITOR
-        ====================== -->
+        <!-- EXPRESSION EDITOR -->
 
         <div
           id="expressionEditor"
@@ -918,7 +1019,6 @@ select,
             선택한 표정 편집
           </div>
 
-
           <div class="editor-row">
 
             <input
@@ -929,7 +1029,6 @@ select,
             >
 
           </div>
-
 
           <div class="editor-row">
 
@@ -950,51 +1049,33 @@ select,
 
           </div>
 
-
           <div class="expression-editor-title">
             크롭 위치
           </div>
 
-
           <div class="crop-controls">
 
-            <button
-              id="cropUp"
-              class="crop-up"
-            >
+            <button id="cropUp">
               ↑
             </button>
 
-            <button
-              id="cropLeft"
-              class="crop-left"
-            >
+            <button id="cropLeft">
               ←
             </button>
 
-            <button
-              id="cropCenter"
-              class="crop-center"
-            >
+            <button id="cropCenter">
               ●
             </button>
 
-            <button
-              id="cropRight"
-              class="crop-right"
-            >
+            <button id="cropRight">
               →
             </button>
 
-            <button
-              id="cropDown"
-              class="crop-down"
-            >
+            <button id="cropDown">
               ↓
             </button>
 
           </div>
-
 
           <div class="zoom-row">
 
@@ -1019,9 +1100,7 @@ select,
     </section>
 
 
-    <!-- =====================
-         RIGHT PREVIEW
-    ====================== -->
+    <!-- RIGHT -->
 
     <section class="preview-box">
 
@@ -1033,23 +1112,18 @@ select,
 
       </div>
 
-
       <div class="preview-area">
 
-        <canvas
-          id="previewCanvas"
-        ></canvas>
+        <canvas id="previewCanvas"></canvas>
 
       </div>
-
 
       <button
         id="savePng"
         class="save-button"
       >
-        PNG 저장
+        완성본 보기
       </button>
-
 
       <button
         id="resetAll"
@@ -1061,6 +1135,71 @@ select,
     </section>
 
   </main>
+
+</div>
+
+
+<!-- =========================
+     PNG MODAL
+========================= -->
+
+<div
+  id="pngModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <div class="modal-title">
+        완성본
+      </div>
+
+      <button
+        id="closeModal"
+        class="modal-close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-hint">
+      이미지를 꾹 눌러 저장하거나 공유할 수 있어요
+    </div>
+
+
+    <div class="modal-image-area">
+
+      <img
+        id="savedImage"
+        alt="완성된 PNG"
+      >
+
+    </div>
+
+
+    <div class="modal-bottom">
+
+      <button
+        id="shareImage"
+        class="modal-share"
+      >
+        공유하기
+      </button>
+
+      <button
+        id="closeModalBottom"
+        class="modal-close-bottom"
+      >
+        닫기
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
@@ -1078,6 +1217,8 @@ let expressionData = [];
 let selectedExpressionId = null;
 
 let nextId = 1;
+
+let savedImageUrl = null;
 
 
 /* =========================================================
@@ -1151,6 +1292,34 @@ const ctx =
   previewCanvas.getContext("2d");
 
 
+/* MODAL */
+
+const pngModal =
+  document.getElementById(
+    "pngModal"
+  );
+
+const savedImage =
+  document.getElementById(
+    "savedImage"
+  );
+
+const closeModal =
+  document.getElementById(
+    "closeModal"
+  );
+
+const closeModalBottom =
+  document.getElementById(
+    "closeModalBottom"
+  );
+
+const shareImage =
+  document.getElementById(
+    "shareImage"
+  );
+
+
 /* =========================================================
    IMAGE LOADER
 ========================================================= */
@@ -1169,7 +1338,8 @@ function loadImage(src) {
       img.onerror =
         reject;
 
-      img.src = src;
+      img.src =
+        src;
 
     }
   );
@@ -1190,18 +1360,14 @@ standingInput.addEventListener(
 
     if (!file) return;
 
-
     const src =
       URL.createObjectURL(file);
-
 
     standingImage =
       await loadImage(src);
 
-
     standingPreview.innerHTML =
       "";
-
 
     const img =
       document.createElement("img");
@@ -1209,9 +1375,9 @@ standingInput.addEventListener(
     img.src =
       src;
 
-
-    standingPreview.appendChild(img);
-
+    standingPreview.appendChild(
+      img
+    );
 
     renderCanvas();
 
@@ -1230,16 +1396,13 @@ expressionInput.addEventListener(
     const files =
       [...event.target.files];
 
-
     for (const file of files) {
 
       const src =
         URL.createObjectURL(file);
 
-
       const img =
         await loadImage(src);
-
 
       expressionData.push({
 
@@ -1270,7 +1433,6 @@ expressionInput.addEventListener(
 
     }
 
-
     if (
       selectedExpressionId === null &&
       expressionData.length > 0
@@ -1281,13 +1443,11 @@ expressionInput.addEventListener(
 
     }
 
-
     renderExpressionGrid();
 
     updateEditor();
 
     renderCanvas();
-
 
     expressionInput.value =
       "";
@@ -1304,7 +1464,6 @@ function renderExpressionGrid() {
 
   expressionGrid.innerHTML =
     "";
-
 
   if (
     expressionData.length === 0
@@ -1327,16 +1486,13 @@ function renderExpressionGrid() {
 
   }
 
-
   const columns =
     Number(
       columnCount.value
     );
 
-
   expressionGrid.style.gridTemplateColumns =
     `repeat(${columns}, minmax(0, 1fr))`;
-
 
   expressionData.forEach(
     (item) => {
@@ -1344,10 +1500,8 @@ function renderExpressionGrid() {
       const card =
         document.createElement("div");
 
-
       card.className =
         "expression-card";
-
 
       if (
         item.id ===
@@ -1360,13 +1514,11 @@ function renderExpressionGrid() {
 
       }
 
-
       const imageBox =
         document.createElement("div");
 
       imageBox.className =
         "expression-image";
-
 
       const img =
         document.createElement("img");
@@ -1374,13 +1526,12 @@ function renderExpressionGrid() {
       img.src =
         item.src;
 
-
       img.style.objectFit =
         "cover";
 
-
-      imageBox.appendChild(img);
-
+      imageBox.appendChild(
+        img
+      );
 
       const name =
         document.createElement("div");
@@ -1391,7 +1542,6 @@ function renderExpressionGrid() {
       name.textContent =
         item.name;
 
-
       card.appendChild(
         imageBox
       );
@@ -1399,7 +1549,6 @@ function renderExpressionGrid() {
       card.appendChild(
         name
       );
-
 
       card.addEventListener(
         "click",
@@ -1415,7 +1564,6 @@ function renderExpressionGrid() {
         }
       );
 
-
       expressionGrid.appendChild(
         card
       );
@@ -1427,7 +1575,7 @@ function renderExpressionGrid() {
 
 
 /* =========================================================
-   SELECTED EXPRESSION
+   SELECTED
 ========================================================= */
 
 function getSelectedExpression() {
@@ -1446,7 +1594,6 @@ function updateEditor() {
   const item =
     getSelectedExpression();
 
-
   if (!item) {
 
     expressionEditor.style.display =
@@ -1459,14 +1606,11 @@ function updateEditor() {
 
   }
 
-
   expressionEditor.style.display =
     "block";
 
-
   selectedName.value =
     item.name;
-
 
   expressionNameInput.value =
     item.name;
@@ -1487,14 +1631,11 @@ expressionNameInput.addEventListener(
 
     if (!item) return;
 
-
     item.name =
       expressionNameInput.value;
 
-
     selectedName.value =
       item.name;
-
 
     renderExpressionGrid();
 
@@ -1505,7 +1646,7 @@ expressionNameInput.addEventListener(
 
 
 /* =========================================================
-   MOVE LEFT
+   MOVE
 ========================================================= */
 
 document
@@ -1521,9 +1662,7 @@ document
             selectedExpressionId
         );
 
-
       if (index <= 0) return;
-
 
       [
         expressionData[index - 1],
@@ -1533,7 +1672,6 @@ document
         expressionData[index - 1]
       ];
 
-
       renderExpressionGrid();
 
       renderCanvas();
@@ -1541,10 +1679,6 @@ document
     }
   );
 
-
-/* =========================================================
-   MOVE RIGHT
-========================================================= */
 
 document
   .getElementById("moveRight")
@@ -1559,7 +1693,6 @@ document
             selectedExpressionId
         );
 
-
       if (
         index < 0 ||
         index >=
@@ -1568,7 +1701,6 @@ document
         return;
       }
 
-
       [
         expressionData[index],
         expressionData[index + 1]
@@ -1576,7 +1708,6 @@ document
         expressionData[index + 1],
         expressionData[index]
       ];
-
 
       renderExpressionGrid();
 
@@ -1604,7 +1735,6 @@ document
         return;
       }
 
-
       const index =
         expressionData.findIndex(
           item =>
@@ -1612,15 +1742,12 @@ document
             selectedExpressionId
         );
 
-
       if (index < 0) return;
-
 
       expressionData.splice(
         index,
         1
       );
-
 
       if (
         expressionData.length === 0
@@ -1637,14 +1764,12 @@ document
             expressionData.length - 1
           );
 
-
         selectedExpressionId =
           expressionData[
             newIndex
           ].id;
 
       }
-
 
       renderExpressionGrid();
 
@@ -1668,14 +1793,11 @@ function changeCrop(
   const item =
     getSelectedExpression();
 
-
   if (!item) return;
-
 
   item.x += dx;
 
   item.y += dy;
-
 
   item.x =
     Math.max(
@@ -1686,7 +1808,6 @@ function changeCrop(
       )
     );
 
-
   item.y =
     Math.max(
       -100,
@@ -1695,7 +1816,6 @@ function changeCrop(
         item.y
       )
     );
-
 
   renderCanvas();
 
@@ -1759,14 +1879,11 @@ document
       const item =
         getSelectedExpression();
 
-
       if (!item) return;
-
 
       item.x = 0;
 
       item.y = 0;
-
 
       renderCanvas();
 
@@ -1787,20 +1904,16 @@ document
       const item =
         getSelectedExpression();
 
-
       if (!item) return;
-
 
       item.zoom +=
         0.1;
-
 
       item.zoom =
         Math.min(
           3,
           item.zoom
         );
-
 
       renderCanvas();
 
@@ -1817,20 +1930,16 @@ document
       const item =
         getSelectedExpression();
 
-
       if (!item) return;
-
 
       item.zoom -=
         0.1;
-
 
       item.zoom =
         Math.max(
           0.5,
           item.zoom
         );
-
 
       renderCanvas();
 
@@ -1839,7 +1948,7 @@ document
 
 
 /* =========================================================
-   APPLY CROP TO ALL
+   APPLY CROP ALL
 ========================================================= */
 
 document
@@ -1853,9 +1962,7 @@ document
       const selected =
         getSelectedExpression();
 
-
       if (!selected) return;
-
 
       expressionData.forEach(
         item => {
@@ -1871,7 +1978,6 @@ document
 
         }
       );
-
 
       renderCanvas();
 
@@ -1892,7 +1998,6 @@ applyRatioAll.addEventListener(
         ratioSelect.value
       );
 
-
     expressionData.forEach(
       item => {
 
@@ -1901,7 +2006,6 @@ applyRatioAll.addEventListener(
 
       }
     );
-
 
     renderCanvas();
 
@@ -1920,7 +2024,6 @@ expressionSize.addEventListener(
     expressionSizeValue.textContent =
       `${expressionSize.value}px`;
 
-
     renderCanvas();
 
   }
@@ -1928,7 +2031,7 @@ expressionSize.addEventListener(
 
 
 /* =========================================================
-   COLUMN
+   COLUMNS
 ========================================================= */
 
 columnCount.addEventListener(
@@ -1937,7 +2040,6 @@ columnCount.addEventListener(
 
     columnValue.textContent =
       `${columnCount.value}개`;
-
 
     renderExpressionGrid();
 
@@ -1948,7 +2050,7 @@ columnCount.addEventListener(
 
 
 /* =========================================================
-   CROP DRAW
+   DRAW CROPPED IMAGE
 ========================================================= */
 
 function drawCroppedImage(
@@ -1963,18 +2065,14 @@ function drawCroppedImage(
   const img =
     item.image;
 
-
   if (!img) return;
-
 
   const targetRatio =
     width / height;
 
-
   const imageRatio =
     img.width /
     img.height;
-
 
   let sourceWidth;
 
@@ -2015,7 +2113,6 @@ function drawCroppedImage(
   const maxX =
     img.width -
     sourceWidth;
-
 
   const maxY =
     img.height -
@@ -2092,28 +2189,22 @@ function renderCanvas() {
       expressionSize.value
     );
 
-
   const columns =
     Number(
       columnCount.value
     );
 
-
   const expressionGap =
     25;
-
 
   const mainGap =
     60;
 
-
   const padding =
     60;
 
-
   const standingWidth =
     700;
-
 
   const standingHeight =
     900;
@@ -2190,18 +2281,16 @@ function renderCanvas() {
       canvasWidth
     );
 
-
   previewCanvas.height =
     Math.round(
       canvasHeight
     );
 
 
-  /* 배경 */
+  /* BACKGROUND */
 
   ctx.fillStyle =
     "#ffffff";
-
 
   ctx.fillRect(
     0,
@@ -2211,9 +2300,7 @@ function renderCanvas() {
   );
 
 
-  /* =========================
-     TITLE
-  ========================= */
+  /* TITLE */
 
   const title =
     titleInput.value.trim();
@@ -2224,18 +2311,14 @@ function renderCanvas() {
     ctx.fillStyle =
       "#222";
 
-
     ctx.font =
       "bold 42px Arial, sans-serif";
-
 
     ctx.textAlign =
       "left";
 
-
     ctx.textBaseline =
       "top";
-
 
     ctx.fillText(
       title,
@@ -2246,9 +2329,7 @@ function renderCanvas() {
   }
 
 
-  /* =========================
-     STANDING
-  ========================= */
+  /* STANDING */
 
   const standingX =
     padding;
@@ -2278,7 +2359,6 @@ function renderCanvas() {
     let drawWidth =
       standingWidth;
 
-
     let drawHeight =
       standingWidth /
       imageRatio;
@@ -2291,7 +2371,6 @@ function renderCanvas() {
 
       drawHeight =
         standingHeight;
-
 
       drawWidth =
         standingHeight *
@@ -2329,10 +2408,8 @@ function renderCanvas() {
     ctx.strokeStyle =
       "#ccc";
 
-
     ctx.lineWidth =
       2;
-
 
     ctx.strokeRect(
       standingX,
@@ -2341,22 +2418,17 @@ function renderCanvas() {
       standingHeight
     );
 
-
     ctx.fillStyle =
       "#aaa";
-
 
     ctx.font =
       "28px Arial, sans-serif";
 
-
     ctx.textAlign =
       "center";
 
-
     ctx.textBaseline =
       "middle";
-
 
     ctx.fillText(
       "기본 스탠딩",
@@ -2369,9 +2441,7 @@ function renderCanvas() {
   }
 
 
-  /* =========================
-     EXPRESSIONS
-  ========================= */
+  /* EXPRESSIONS */
 
   const expressionStartX =
     padding +
@@ -2416,8 +2486,6 @@ function renderCanvas() {
         );
 
 
-      /* 이미지 */
-
       drawCroppedImage(
         ctx,
         item,
@@ -2428,23 +2496,17 @@ function renderCanvas() {
       );
 
 
-      /* 이름 */
-
       ctx.fillStyle =
         "#222";
-
 
       ctx.font =
         "22px Arial, sans-serif";
 
-
       ctx.textAlign =
         "center";
 
-
       ctx.textBaseline =
         "middle";
-
 
       ctx.fillText(
         item.name,
@@ -2462,7 +2524,7 @@ function renderCanvas() {
 
 
 /* =========================================================
-   TITLE UPDATE
+   TITLE
 ========================================================= */
 
 titleInput.addEventListener(
@@ -2472,8 +2534,7 @@ titleInput.addEventListener(
 
 
 /* =========================================================
-   SAVE PNG
-   iPad / Safari 대응
+   OPEN PNG MODAL
 ========================================================= */
 
 document
@@ -2481,6 +2542,127 @@ document
   .addEventListener(
     "click",
     () => {
+
+      /*
+        현재 canvas를 PNG 이미지로 변환
+      */
+
+      const dataUrl =
+        previewCanvas.toDataURL(
+          "image/png"
+        );
+
+
+      /*
+        기존 blob URL 정리
+      */
+
+      if (savedImageUrl) {
+
+        URL.revokeObjectURL(
+          savedImageUrl
+        );
+
+        savedImageUrl =
+          null;
+
+      }
+
+
+      /*
+        PNG를 실제 이미지로 표시
+      */
+
+      savedImage.src =
+        dataUrl;
+
+
+      /*
+        팝업 열기
+      */
+
+      pngModal.classList.add(
+        "show"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+  );
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closePngModal() {
+
+  pngModal.classList.remove(
+    "show"
+  );
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+closeModal.addEventListener(
+  "click",
+  closePngModal
+);
+
+
+closeModalBottom.addEventListener(
+  "click",
+  closePngModal
+);
+
+
+/*
+  이미지 바깥쪽을 눌렀을 때 닫기
+*/
+
+pngModal.addEventListener(
+  "click",
+  (event) => {
+
+    if (
+      event.target ===
+      pngModal
+    ) {
+
+      closePngModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SHARE IMAGE
+========================================================= */
+
+shareImage.addEventListener(
+  "click",
+  async () => {
+
+    if (!savedImage.src) return;
+
+
+    try {
+
+      const response =
+        await fetch(
+          savedImage.src
+        );
+
+
+      const blob =
+        await response.blob();
+
 
       const title =
         titleInput.value.trim();
@@ -2492,121 +2674,57 @@ document
           : "trpg-standing.png";
 
 
-      previewCanvas.toBlob(
-        async (blob) => {
-
-          if (!blob) {
-
-            alert(
-              "PNG를 만드는 데 실패했어."
-            );
-
-            return;
-
+      const file =
+        new File(
+          [blob],
+          filename,
+          {
+            type:
+              "image/png"
           }
+        );
 
 
-          const file =
-            new File(
-              [blob],
-              filename,
-              {
-                type:
-                  "image/png"
-              }
-            );
+      if (
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({
+          files: [file]
+        })
+      ) {
 
+        await navigator.share({
+          files: [file],
+          title: filename
+        });
 
-          /*
-            iPad / iPhone에서
-            공유 메뉴를 사용할 수 있는 경우
-          */
+      } else {
 
-          if (
-            navigator.share &&
-            navigator.canShare &&
-            navigator.canShare({
-              files: [file]
-            })
-          ) {
+        alert(
+          "이 브라우저에서는 공유 기능을 사용할 수 없어요. 이미지를 꾹 눌러 저장해주세요."
+        );
 
-            try {
+      }
 
-              await navigator.share({
-                files: [file],
-                title: filename
-              });
+    } catch (error) {
 
+      if (
+        error.name !==
+        "AbortError"
+      ) {
 
-              return;
+        console.error(error);
 
-            } catch (error) {
+        alert(
+          "공유하는 중 문제가 생겼어요."
+        );
 
-              /*
-                사용자가 공유창을
-                그냥 닫은 경우
-              */
-
-              if (
-                error.name ===
-                "AbortError"
-              ) {
-
-                return;
-
-              }
-
-            }
-
-          }
-
-
-          /*
-            공유 기능을 사용할 수 없는
-            브라우저용 fallback
-          */
-
-          const url =
-            URL.createObjectURL(
-              blob
-            );
-
-
-          const newWindow =
-            window.open(
-              url,
-              "_blank"
-            );
-
-
-          if (!newWindow) {
-
-            alert(
-              "팝업이 차단됐어. Safari에서 다시 눌러줘."
-            );
-
-            return;
-
-          }
-
-
-          setTimeout(
-            () => {
-
-              URL.revokeObjectURL(
-                url
-              );
-
-            },
-            60000
-          );
-
-        },
-        "image/png"
-      );
+      }
 
     }
-  );
+
+  }
+);
 
 
 /* =========================================================
@@ -2631,14 +2749,11 @@ document
       standingImage =
         null;
 
-
       expressionData =
         [];
 
-
       selectedExpressionId =
         null;
-
 
       nextId =
         1;

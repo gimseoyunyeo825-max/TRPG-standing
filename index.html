@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TRPG Standing Sheet</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f3f3f3;
+  color: #222;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Pretendard",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  max-width: 1700px;
+  margin: 0 auto 18px;
+  background: white;
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+.title-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  font-weight: 700;
+  background: transparent;
+}
+
+.title-input::placeholder {
+  color: #aaa;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+  max-width: 1700px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(500px, 1fr) minmax(500px, 1.2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* =========================
+   LEFT EDITOR
+========================= */
+
+.editor {
+  min-width: 0;
+}
+
+.source-box {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+.source-top {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+}
+
+/* standing */
+
+.standing-section h2,
+.expression-section h2,
+.settings h2,
+.preview-box h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.standing-preview {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 2px dashed #ccc;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  background: #fafafa;
+  color: #aaa;
+  text-align: center;
+  padding: 10px;
+}
+
+.standing-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.file-button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: #222;
+  color: white;
+  text-align: center;
+}
+
+.file-button:hover {
+  opacity: 0.85;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* expressions */
+
+.expression-section {
+  min-width: 0;
+}
+
+.expression-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-height: 420px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.expression-card {
+  position: relative;
+  min-width: 0;
+  border: 2px solid #e3e3e3;
+  border-radius: 12px;
+  padding: 6px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.expression-card:hover {
+  border-color: #aaa;
+}
+
+.expression-card.selected {
+  border-color: #222;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
+}
+
+.expression-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.expression-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.expression-name {
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expression-empty {
+  min-height: 180px;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings {
+  margin-top: 18px;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+.setting-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.setting-item {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fafafa;
+}
+
+.setting-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.setting-value {
+  color: #777;
+  font-weight: 500;
+}
+
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+select,
+.text-input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  padding: 8px;
+  outline: none;
+}
+
+.ratio-row {
+  display: flex;
+  gap: 8px;
+}
+
+.ratio-row select {
+  flex: 1;
+}
+
+.small-button {
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: white;
+  padding: 8px 11px;
+  white-space: nowrap;
+}
+
+.small-button:hover {
+  opacity: 0.85;
+}
+
+/* =========================
+   SELECTED EXPRESSION EDITOR
+========================= */
+
+.expression-editor {
+  margin-top: 14px;
+  border: 1px solid #e2e2e2;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fafafa;
+}
+
+.expression-editor-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.editor-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.editor-row:last-child {
+  margin-bottom: 0;
+}
+
+.editor-row button {
+  border: none;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+}
+
+.editor-row button:hover {
+  background: #eee;
+}
+
+.editor-row .danger {
+  color: #c33;
+}
+
+.crop-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.crop-controls button {
+  width: 40px;
+  height: 36px;
+  padding: 0;
+}
+
+.crop-center {
+  grid-column: 2;
+}
+
+.crop-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.crop-right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.crop-down {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.crop-up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.zoom-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.zoom-row button {
+  flex: 1;
+}
+
+/* =========================
+   PREVIEW
+========================= */
+
+.preview-box {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+
+  position: sticky;
+  top: 20px;
+}
+
+.preview-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.preview-title-row h2 {
+  margin: 0;
+}
+
+.preview-area {
+  width: 100%;
+  min-height: 720px;
+
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  background:
+    linear-gradient(45deg, #fafafa 25%, transparent 25%),
+    linear-gradient(-45deg, #fafafa 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #fafafa 75%),
+    linear-gradient(-45deg, transparent 75%, #fafafa 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: auto;
+  padding: 20px;
+}
+
+#previewCanvas {
+  display: block;
+  max-width: none;
+
+  background: white;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.save-button {
+  width: 100%;
+  margin-top: 12px;
+
+  border: none;
+  border-radius: 12px;
+  padding: 13px;
+
+  background: #222;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.save-button:hover {
+  opacity: 0.85;
+}
+
+.reset-button {
+  width: 100%;
+  margin-top: 8px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+
+  background: white;
+  color: #555;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-box {
+    position: static;
+  }
+
+  .preview-area {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding: 10px;
+  }
+
+  .source-top {
+    grid-template-columns: 1fr;
+  }
+
+  .standing-preview {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .setting-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expression-grid {
+    max-height: none;
+  }
+
+  .preview-area {
+    min-height: 400px;
+    padding: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="header">
+    <input
+      id="titleInput"
+      class="title-input"
+      type="text"
+      placeholder="이름을 입력하세요"
+      value=""
+    >
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main">
+
+    <!-- =====================
+         LEFT
+    ====================== -->
+
+    <section class="editor">
+
+      <div class="source-box">
+
+        <div class="source-top">
+
+          <!-- 기본 스탠딩 -->
+
+          <div class="standing-section">
+
+            <h2>기본 스탠딩</h2>
+
+            <div
+              id="standingPreview"
+              class="standing-preview"
+            >
+              기본 스탠딩을 추가해주세요
+            </div>
+
+            <label class="file-button">
+              기본 스탠딩 추가
+              <input
+                id="standingInput"
+                type="file"
+                accept="image/png,image/*"
+              >
+            </label>
+
+          </div>
+
+
+          <!-- 표정 -->
+
+          <div class="expression-section">
+
+            <h2>표정</h2>
+
+            <div
+              id="expressionGrid"
+              class="expression-grid"
+            >
+              <div class="expression-empty">
+                표정 이미지를 추가해주세요
+              </div>
+            </div>
+
+            <label class="file-button">
+              표정 여러 장 추가
+              <input
+                id="expressionInput"
+                type="file"
+                accept="image/png,image/*"
+                multiple
+              >
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================
+           SETTINGS
+      ====================== -->
+
+      <section class="settings">
+
+        <h2>표정 설정</h2>
+
+        <div class="setting-grid">
+
+          <!-- 표정 크기 -->
+
+          <div class="setting-item">
+
+            <div class="setting-label">
+              <span>표정 크기</span>
+              <span
+                id="expressionSizeValue"
+                class="setting-value"
+              >
+                280px
+              </span>
+            </div>
+
+            <div class="range-row">
+
+              <input
+                id="expressionSize"
+                type="range"
+                min="150"
+                max="500"
+                step="10"
+                value="280"
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- 열 -->
+
+          <div class="setting-item">
+
+            <div class="setting-label">
+              <span>한 줄에 표시할 표정</span>
+              <span
+                id="columnValue"
+                class="setting-value"
+              >
+                3개
+              </span>
+            </div>
+
+            <select id="columnCount">
+              <option value="1">1개</option>
+              <option value="2">2개</option>
+              <option value="3" selected>3개</option>
+              <option value="4">4개</option>
+              <option value="5">5개</option>
+              <option value="6">6개</option>
+              <option value="7">7개</option>
+              <option value="8">8개</option>
+            </select>
+
+          </div>
+
+
+          <!-- 비율 -->
+
+          <div class="setting-item">
+
+            <div class="setting-label">
+              <span>표정 비율</span>
+            </div>
+
+            <div class="ratio-row">
+
+              <select id="ratioSelect">
+
+                <option value="1">1 : 1</option>
+                <option value="1.333333">4 : 3</option>
+                <option value="0.75">3 : 4</option>
+                <option value="1.777777">16 : 9</option>
+
+              </select>
+
+              <button
+                id="applyRatioAll"
+                class="small-button"
+              >
+                전체 적용
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- 선택 표정 -->
+
+          <div class="setting-item">
+
+            <div class="setting-label">
+              <span>선택된 표정</span>
+            </div>
+
+            <input
+              id="selectedName"
+              class="text-input"
+              type="text"
+              placeholder="표정 이름"
+              disabled
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- 선택된 표정 편집 -->
+
+        <div
+          id="expressionEditor"
+          class="expression-editor"
+          style="display:none;"
+        >
+
+          <div class="expression-editor-title">
+            선택한 표정 편집
+          </div>
+
+          <div class="editor-row">
+
+            <input
+              id="expressionNameInput"
+              class="text-input"
+              type="text"
+              placeholder="표정 이름"
+            >
+
+          </div>
+
+
+          <div class="editor-row">
+
+            <button id="moveLeft">
+              ← 앞으로
+            </button>
+
+            <button id="moveRight">
+              뒤로 →
+            </button>
+
+            <button
+              id="deleteExpression"
+              class="danger"
+            >
+              삭제
+            </button>
+
+          </div>
+
+
+          <div class="expression-editor-title">
+            크롭 위치
+          </div>
+
+          <div class="crop-controls">
+
+            <button
+              id="cropUp"
+              class="crop-up"
+            >
+              ↑
+            </button>
+
+            <button
+              id="cropLeft"
+              class="crop-left"
+            >
+              ←
+            </button>
+
+            <button
+              id="cropCenter"
+              class="crop-center"
+            >
+              ●
+            </button>
+
+            <button
+              id="cropRight"
+              class="crop-right"
+            >
+              →
+            </button>
+
+            <button
+              id="cropDown"
+              class="crop-down"
+            >
+              ↓
+            </button>
+
+          </div>
+
+
+          <div class="zoom-row">
+
+            <button id="zoomOut">
+              축소
+            </button>
+
+            <button id="zoomIn">
+              확대
+            </button>
+
+            <button id="applyCropAll">
+              현재 크롭 전체 적용
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =====================
+         RIGHT PREVIEW
+    ====================== -->
+
+    <section class="preview-box">
+
+      <div class="preview-title-row">
+
+        <h2>완성본 미리보기</h2>
+
+      </div>
+
+      <div class="preview-area">
+
+        <canvas id="previewCanvas"></canvas>
+
+      </div>
+
+      <button
+        id="savePng"
+        class="save-button"
+      >
+        PNG로 저장
+      </button>
+
+      <button
+        id="resetAll"
+        class="reset-button"
+      >
+        전체 초기화
+      </button>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   DATA
+========================================================= */
+
+let standingImage = null;
+
+let expressionData = [];
+
+let selectedExpressionId = null;
+
+let nextId = 1;
+
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const titleInput =
+  document.getElementById("titleInput");
+
+const standingInput =
+  document.getElementById("standingInput");
+
+const standingPreview =
+  document.getElementById("standingPreview");
+
+const expressionInput =
+  document.getElementById("expressionInput");
+
+const expressionGrid =
+  document.getElementById("expressionGrid");
+
+const expressionSize =
+  document.getElementById("expressionSize");
+
+const expressionSizeValue =
+  document.getElementById("expressionSizeValue");
+
+const columnCount =
+  document.getElementById("columnCount");
+
+const columnValue =
+  document.getElementById("columnValue");
+
+const ratioSelect =
+  document.getElementById("ratioSelect");
+
+const applyRatioAll =
+  document.getElementById("applyRatioAll");
+
+const selectedName =
+  document.getElementById("selectedName");
+
+const expressionEditor =
+  document.getElementById("expressionEditor");
+
+const expressionNameInput =
+  document.getElementById("expressionNameInput");
+
+const previewCanvas =
+  document.getElementById("previewCanvas");
+
+const ctx =
+  previewCanvas.getContext("2d");
+
+
+/* =========================================================
+   IMAGE LOADER
+========================================================= */
+
+function loadImage(src) {
+
+  return new Promise((resolve, reject) => {
+
+    const img = new Image();
+
+    img.onload = () => resolve(img);
+
+    img.onerror = reject;
+
+    img.src = src;
+
+  });
+
+}
+
+
+/* =========================================================
+   STANDING IMAGE
+========================================================= */
+
+standingInput.addEventListener("change", async (event) => {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const src = URL.createObjectURL(file);
+
+  standingImage = await loadImage(src);
+
+  standingPreview.innerHTML = "";
+
+  const img = document.createElement("img");
+
+  img.src = src;
+
+  standingPreview.appendChild(img);
+
+  renderCanvas();
+
+});
+
+
+/* =========================================================
+   EXPRESSION UPLOAD
+========================================================= */
+
+expressionInput.addEventListener("change", async (event) => {
+
+  const files = [...event.target.files];
+
+  for (const file of files) {
+
+    const src = URL.createObjectURL(file);
+
+    const img = await loadImage(src);
+
+    expressionData.push({
+
+      id: nextId++,
+
+      src,
+
+      image: img,
+
+      name: file.name.replace(/\.[^/.]+$/, ""),
+
+      x: 0,
+
+      y: 0,
+
+      zoom: 1,
+
+      ratio: Number(ratioSelect.value)
+
+    });
+
+  }
+
+  if (
+    selectedExpressionId === null &&
+    expressionData.length > 0
+  ) {
+    selectedExpressionId =
+      expressionData[0].id;
+  }
+
+  renderExpressionGrid();
+
+  updateEditor();
+
+  renderCanvas();
+
+  expressionInput.value = "";
+
+});
+
+
+/* =========================================================
+   EXPRESSION GRID
+========================================================= */
+
+function renderExpressionGrid() {
+
+  expressionGrid.innerHTML = "";
+
+  if (expressionData.length === 0) {
+
+    const empty =
+      document.createElement("div");
+
+    empty.className =
+      "expression-empty";
+
+    empty.textContent =
+      "표정 이미지를 추가해주세요";
+
+    expressionGrid.appendChild(empty);
+
+    return;
+
+  }
+
+
+  const columns =
+    Number(columnCount.value);
+
+  expressionGrid.style.gridTemplateColumns =
+    `repeat(${columns}, minmax(0, 1fr))`;
+
+
+  expressionData.forEach((item) => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "expression-card";
+
+    if (
+      item.id === selectedExpressionId
+    ) {
+      card.classList.add("selected");
+    }
+
+
+    const imageBox =
+      document.createElement("div");
+
+    imageBox.className =
+      "expression-image";
+
+
+    const img =
+      document.createElement("img");
+
+    img.src = item.src;
+
+    img.style.objectFit = "cover";
+
+    imageBox.appendChild(img);
+
+
+    const name =
+      document.createElement("div");
+
+    name.className =
+      "expression-name";
+
+    name.textContent =
+      item.name;
+
+
+    card.appendChild(imageBox);
+
+    card.appendChild(name);
+
+
+    card.addEventListener("click", () => {
+
+      selectedExpressionId =
+        item.id;
+
+      renderExpressionGrid();
+
+      updateEditor();
+
+    });
+
+
+    expressionGrid.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================================================
+   SELECTED EXPRESSION
+========================================================= */
+
+function getSelectedExpression() {
+
+  return expressionData.find(
+    item =>
+      item.id === selectedExpressionId
+  );
+
+}
+
+
+function updateEditor() {
+
+  const item =
+    getSelectedExpression();
+
+
+  if (!item) {
+
+    expressionEditor.style.display =
+      "none";
+
+    selectedName.value = "";
+
+    return;
+
+  }
+
+
+  expressionEditor.style.display =
+    "block";
+
+  selectedName.value =
+    item.name;
+
+  expressionNameInput.value =
+    item.name;
+
+}
+
+
+/* =========================================================
+   EXPRESSION NAME
+========================================================= */
+
+expressionNameInput.addEventListener(
+  "input",
+  () => {
+
+    const item =
+      getSelectedExpression();
+
+    if (!item) return;
+
+    item.name =
+      expressionNameInput.value;
+
+    selectedName.value =
+      item.name;
+
+    renderExpressionGrid();
+
+    renderCanvas();
+
+  }
+);
+
+
+/* =========================================================
+   MOVE
+========================================================= */
+
+document
+  .getElementById("moveLeft")
+  .addEventListener("click", () => {
+
+    const index =
+      expressionData.findIndex(
+        item =>
+          item.id === selectedExpressionId
+      );
+
+    if (index <= 0) return;
+
+    [
+      expressionData[index - 1],
+      expressionData[index]
+    ] = [
+      expressionData[index],
+      expressionData[index - 1]
+    ];
+
+    renderExpressionGrid();
+
+    renderCanvas();
+
+  });
+
+
+document
+  .getElementById("moveRight")
+  .addEventListener("click", () => {
+
+    const index =
+      expressionData.findIndex(
+        item =>
+          item.id === selectedExpressionId
+      );
+
+    if (
+      index < 0 ||
+      index >= expressionData.length - 1
+    ) {
+      return;
+    }
+
+    [
+      expressionData[index],
+      expressionData[index + 1]
+    ] = [
+      expressionData[index + 1],
+      expressionData[index]
+    ];
+
+    renderExpressionGrid();
+
+    renderCanvas();
+
+  });
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+document
+  .getElementById("deleteExpression")
+  .addEventListener("click", () => {
+
+    if (selectedExpressionId === null)
+      return;
+
+    const index =
+      expressionData.findIndex(
+        item =>
+          item.id === selectedExpressionId
+      );
+
+    if (index < 0) return;
+
+    expressionData.splice(index, 1);
+
+
+    if (expressionData.length === 0) {
+
+      selectedExpressionId = null;
+
+    } else {
+
+      const newIndex =
+        Math.min(
+          index,
+          expressionData.length - 1
+        );
+
+      selectedExpressionId =
+        expressionData[newIndex].id;
+
+    }
+
+
+    renderExpressionGrid();
+
+    updateEditor();
+
+    renderCanvas();
+
+  });
+
+
+/* =========================================================
+   CROP
+========================================================= */
+
+function changeCrop(dx, dy) {
+
+  const item =
+    getSelectedExpression();
+
+  if (!item) return;
+
+  item.x += dx;
+
+  item.y += dy;
+
+  item.x =
+    Math.max(-100, Math.min(100, item.x));
+
+  item.y =
+    Math.max(-100, Math.min(100, item.y));
+
+  renderCanvas();
+
+}
+
+
+document
+  .getElementById("cropUp")
+  .addEventListener(
+    "click",
+    () => changeCrop(0, -5)
+  );
+
+
+document
+  .getElementById("cropDown")
+  .addEventListener(
+    "click",
+    () => changeCrop(0, 5)
+  );
+
+
+document
+  .getElementById("cropLeft")
+  .addEventListener(
+    "click",
+    () => changeCrop(-5, 0)
+  );
+
+
+document
+  .getElementById("cropRight")
+  .addEventListener(
+    "click",
+    () => changeCrop(5, 0)
+  );
+
+
+document
+  .getElementById("cropCenter")
+  .addEventListener("click", () => {
+
+    const item =
+      getSelectedExpression();
+
+    if (!item) return;
+
+    item.x = 0;
+
+    item.y = 0;
+
+    renderCanvas();
+
+  });
+
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+document
+  .getElementById("zoomIn")
+  .addEventListener("click", () => {
+
+    const item =
+      getSelectedExpression();
+
+    if (!item) return;
+
+    item.zoom += 0.1;
+
+    item.zoom =
+      Math.min(3, item.zoom);
+
+    renderCanvas();
+
+  });
+
+
+document
+  .getElementById("zoomOut")
+  .addEventListener("click", () => {
+
+    const item =
+      getSelectedExpression();
+
+    if (!item) return;
+
+    item.zoom -= 0.1;
+
+    item.zoom =
+      Math.max(0.5, item.zoom);
+
+    renderCanvas();
+
+  });
+
+
+/* =========================================================
+   APPLY CROP TO ALL
+========================================================= */
+
+document
+  .getElementById("applyCropAll")
+  .addEventListener("click", () => {
+
+    const selected =
+      getSelectedExpression();
+
+    if (!selected) return;
+
+    expressionData.forEach(item => {
+
+      item.x = selected.x;
+
+      item.y = selected.y;
+
+      item.zoom = selected.zoom;
+
+    });
+
+    renderCanvas();
+
+  });
+
+
+/* =========================================================
+   RATIO
+========================================================= */
+
+applyRatioAll.addEventListener(
+  "click",
+  () => {
+
+    const ratio =
+      Number(ratioSelect.value);
+
+    expressionData.forEach(item => {
+
+      item.ratio = ratio;
+
+    });
+
+    renderCanvas();
+
+  }
+);
+
+
+/* =========================================================
+   SIZE
+========================================================= */
+
+expressionSize.addEventListener(
+  "input",
+  () => {
+
+    expressionSizeValue.textContent =
+      `${expressionSize.value}px`;
+
+    renderCanvas();
+
+  }
+);
+
+
+/* =========================================================
+   COLUMN
+========================================================= */
+
+columnCount.addEventListener(
+  "change",
+  () => {
+
+    columnValue.textContent =
+      `${columnCount.value}개`;
+
+    renderExpressionGrid();
+
+    renderCanvas();
+
+  }
+);
+
+
+/* =========================================================
+   CROP DRAW
+========================================================= */
+
+function drawCroppedImage(
+  ctx,
+  item,
+  x,
+  y,
+  width,
+  height
+) {
+
+  const img =
+    item.image;
+
+  if (!img) return;
+
+
+  const targetRatio =
+    width / height;
+
+  const imageRatio =
+    img.width / img.height;
+
+
+  let sourceWidth;
+  let sourceHeight;
+
+
+  if (imageRatio > targetRatio) {
+
+    sourceHeight =
+      img.height;
+
+    sourceWidth =
+      img.height * targetRatio;
+
+  } else {
+
+    sourceWidth =
+      img.width;
+
+    sourceHeight =
+      img.width / targetRatio;
+
+  }
+
+
+  /*
+    확대
+
+    zoom 1 = 기본 크기
+    zoom 2 = 두 배 확대
+  */
+
+  sourceWidth /= item.zoom;
+
+  sourceHeight /= item.zoom;
+
+
+  const maxX =
+    img.width - sourceWidth;
+
+  const maxY =
+    img.height - sourceHeight;
+
+
+  /*
+    x/y는 -100 ~ 100
+
+    0 = 중앙
+  */
+
+  let sx =
+    (maxX / 2) +
+    (maxX / 2) * (item.x / 100);
+
+  let sy =
+    (maxY / 2) +
+    (maxY / 2) * (item.y / 100);
+
+
+  sx =
+    Math.max(
+      0,
+      Math.min(maxX, sx)
+    );
+
+  sy =
+    Math.max(
+      0,
+      Math.min(maxY, sy)
+    );
+
+
+  ctx.drawImage(
+    img,
+    sx,
+    sy,
+    sourceWidth,
+    sourceHeight,
+    x,
+    y,
+    width,
+    height
+  );
+
+}
+
+
+/* =========================================================
+   CANVAS RENDER
+========================================================= */
+
+async function renderCanvas() {
+
+  const expressionWidth =
+    Number(expressionSize.value);
+
+  const columns =
+    Number(columnCount.value);
+
+  const expressionGap =
+    25;
+
+  const mainGap =
+    60;
+
+  const padding =
+    60;
+
+  const standingWidth =
+    700;
+
+  const standingHeight =
+    900;
+
+
+  /*
+    전체 표정 영역 크기
+  */
+
+  const expressionAreaWidth =
+    expressionWidth * columns +
+    expressionGap * (columns - 1);
+
+
+  /*
+    선택된 표정 비율
+
+    전체 적용을 눌렀다면 모두 같은 비율.
+    기본값은 1:1.
+  */
+
+  const firstExpression =
+    expressionData[0];
+
+  const expressionRatio =
+    firstExpression
+      ? firstExpression.ratio
+      : 1;
+
+
+  const expressionHeight =
+    expressionWidth /
+    expressionRatio;
+
+
+  const rows =
+    Math.max(
+      1,
+      Math.ceil(
+        expressionData.length /
+        columns
+      )
+    );
+
+
+  const nameHeight =
+    55;
+
+  const rowHeight =
+    expressionHeight +
+    nameHeight;
+
+
+  const expressionAreaHeight =
+    rows * rowHeight +
+    Math.max(0, rows - 1) *
+    expressionGap;
+
+
+  const canvasWidth =
+    padding * 2 +
+    standingWidth +
+    mainGap +
+    expressionAreaWidth;
+
+
+  const canvasHeight =
+    padding * 2 +
+    Math.max(
+      standingHeight,
+      expressionAreaHeight
+    );
+
+
+  previewCanvas.width =
+    Math.round(canvasWidth);
+
+  previewCanvas.height =
+    Math.round(canvasHeight);
+
+
+  /* 흰색 배경 */
+
+  ctx.fillStyle =
+    "#ffffff";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvasWidth,
+    canvasHeight
+  );
+
+
+  /* =========================
+     제목
+  ========================= */
+
+  const title =
+    titleInput.value.trim();
+
+
+  if (title) {
+
+    ctx.fillStyle =
+      "#222";
+
+    ctx.font =
+      "bold 42px Arial, sans-serif";
+
+    ctx.textAlign =
+      "left";
+
+    ctx.textBaseline =
+      "top";
+
+    ctx.fillText(
+      title,
+      padding,
+      25
+    );
+
+  }
+
+
+  /* =========================
+     기본 스탠딩
+  ========================= */
+
+  const standingX =
+    padding;
+
+  const standingY =
+    padding +
+    Math.max(
+      0,
+      (
+        Math.max(
+          standingHeight,
+          expressionAreaHeight
+        ) -
+        standingHeight
+      ) / 2
+    );
+
+
+  if (standingImage) {
+
+    const imageRatio =
+      standingImage.width /
+      standingImage.height;
+
+    let drawWidth =
+      standingWidth;
+
+    let drawHeight =
+      standingWidth /
+      imageRatio;
+
+
+    if (drawHeight > standingHeight) {
+
+      drawHeight =
+        standingHeight;
+
+      drawWidth =
+        standingHeight *
+        imageRatio;
+
+    }
+
+
+    const drawX =
+      standingX +
+      (standingWidth - drawWidth) / 2;
+
+    const drawY =
+      standingY +
+      (standingHeight - drawHeight) / 2;
+
+
+    ctx.drawImage(
+      standingImage,
+      drawX,
+      drawY,
+      drawWidth,
+      drawHeight
+    );
+
+  } else {
+
+    ctx.strokeStyle =
+      "#ccc";
+
+    ctx.lineWidth =
+      2;
+
+    ctx.strokeRect(
+      standingX,
+      standingY,
+      standingWidth,
+      standingHeight
+    );
+
+    ctx.fillStyle =
+      "#aaa";
+
+    ctx.font =
+      "28px Arial, sans-serif";
+
+    ctx.textAlign =
+      "center";
+
+    ctx.textBaseline =
+      "middle";
+
+    ctx.fillText(
+      "기본 스탠딩",
+      standingX +
+        standingWidth / 2,
+      standingY +
+        standingHeight / 2
+    );
+
+  }
+
+
+  /* =========================
+     표정
+  ========================= */
+
+  const expressionStartX =
+    padding +
+    standingWidth +
+    mainGap;
+
+
+  const expressionStartY =
+    padding;
+
+
+  expressionData.forEach(
+    (item, index) => {
+
+      const column =
+        index % columns;
+
+      const row =
+        Math.floor(index / columns);
+
+
+      const x =
+        expressionStartX +
+        column *
+        (
+          expressionWidth +
+          expressionGap
+        );
+
+
+      const y =
+        expressionStartY +
+        row *
+        (
+          rowHeight +
+          expressionGap
+        );
+
+
+      /*
+        이미지 영역
+      */
+
+      drawCroppedImage(
+        ctx,
+        item,
+        x,
+        y,
+        expressionWidth,
+        expressionHeight
+      );
+
+
+      /*
+        이름
+      */
+
+      ctx.fillStyle =
+        "#222";
+
+      ctx.font =
+        "22px Arial, sans-serif";
+
+      ctx.textAlign =
+        "center";
+
+      ctx.textBaseline =
+        "middle";
+
+
+      ctx.fillText(
+        item.name,
+        x +
+          expressionWidth / 2,
+        y +
+          expressionHeight +
+          nameHeight / 2
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+titleInput.addEventListener(
+  "input",
+  renderCanvas
+);
+
+
+/* =========================================================
+   SAVE PNG
+========================================================= */
+
+document
+  .getElementById("savePng")
+  .addEventListener("click", () => {
+
+    const title =
+      titleInput.value.trim();
+
+
+    const filename =
+      title
+        ? `${title}.png`
+        : "trpg-standing.png";
+
+
+    const link =
+      document.createElement("a");
+
+    link.download =
+      filename;
+
+    link.href =
+      previewCanvas.toDataURL(
+        "image/png"
+      );
+
+    link.click();
+
+  });
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+document
+  .getElementById("resetAll")
+  .addEventListener("click", () => {
+
+    const ok =
+      confirm(
+        "현재 작업을 전부 초기화할까요?"
+      );
+
+    if (!ok) return;
+
+
+    standingImage = null;
+
+    expressionData = [];
+
+    selectedExpressionId = null;
+
+    nextId = 1;
+
+
+    standingPreview.innerHTML =
+      "기본 스탠딩을 추가해주세요";
+
+
+    titleInput.value = "";
+
+    expressionSize.value = 280;
+
+    expressionSizeValue.textContent =
+      "280px";
+
+    columnCount.value = 3;
+
+    columnValue.textContent =
+      "3개";
+
+
+    renderExpressionGrid();
+
+    updateEditor();
+
+    renderCanvas();
+
+  });
+
+
+/* =========================================================
+   INITIAL
+========================================================= */
+
+renderExpressionGrid();
+
+updateEditor();
+
+renderCanvas();
+
+</script>
+
+</body>
+</html>
